@@ -1,0 +1,220 @@
+$bg-color : #161B21;
+$button-color : #323232;
+$input-color: #141414;
+
+body {
+    background-color: $bg-color;
+    font-size: 14px;
+    line-height: 2;
+    color: #fff;
+}
+
+.chapter-editor {
+    text-align: left !important;
+    background-color: $bg-color;
+    textarea {
+        background-color: $input-color;
+        border: none;
+        padding: 20px;
+        box-sizing: border-box;
+        resize: none;
+        font-family: inherit;
+        font-size: inherit;
+        line-height: inherit;
+        color: inherit;
+        &:focus {
+            outline: none;
+            background-color: #0a0a0a;
+        }
+    }
+    .chapter {
+    text-align: left !important;
+    background-color: #323232;
+        .active-type {
+            text-align: left !important;
+            transition: all .088s ease-in-out;
+        }
+        .title {
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+            cursor: pointer;
+            .chapter-button {
+                display: none;
+            }
+            .filler {
+                flex: 1 0;
+            }
+        }
+        &:hover {
+            .title {
+                .chapter-button {
+                    display: inline-block;
+                }
+            }
+            .active-type {
+                background-color: #414141;
+            }
+        }
+    }
+    .contents {
+        background-color: #1e1e1e;
+        display: flex; 
+        .description {
+            display: inline-flex;
+            align-items: stretch;
+        }
+        .list {
+            flex-direction: column;
+            flex: 2 0;
+            display: inline-flex;
+            align-items: stretch; 
+            ol {
+                background-color: #1e1e1e;
+                margin-bottom: 0px !important;
+                margin-top: 0px;
+            }
+            .add {
+                width: 100%;
+                text-align: center;
+                background-color: #1e1e1e;
+                height: auto !important;
+                cursor: pointer;  
+                border-radius: 4px;
+                border: none 0;
+                padding: 4px;
+                margin-right: 6px;
+                img {
+                    margin: 15px;
+                    vertical-align: middle;
+                    transform:scale(0.8);
+                }
+                &:hover {
+                    background-color: #282828;
+                }
+                &:focus {
+                    outline: none;
+                }
+            }
+        }
+    }
+}
+
+.level-item {
+    padding: 15px;
+    background-color: transparent;
+    transition: all .088s ease-in-out;
+    margin: 10px auto;
+    cursor: pointer;
+    &:first-of-type {
+        margin: 0px auto 10px; 
+    }
+    &:last-of-type {
+        margin: 10px auto 0px; 
+    }
+    &:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        div {
+            display: inline-block;
+        }
+   }
+    }
+    div {
+        display: none; 
+    }
+}
+
+.chapter-title {
+    display: inline-block;
+}
+
+.chapters-button {
+   	height: 32px;
+	width: 32px;
+	border-radius: 4px;
+	background-color: $button-color;
+	border: none 0;
+	padding: 4px;
+    margin: 6px;
+    img {
+        vertical-align: middle;
+        transform: scale(0.8);
+    }
+}
+
+@mixin media($queryString) {
+    @media #{$queryString} {
+        @content;
+    }
+}
+
+.container {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 15px;
+    padding-right: 15px; 
+    &:before, &:after {
+        content: "";
+        display: table;
+    }
+    &:after {
+        clear: both;
+    }
+    @include media("(min-width: 768px)") {
+        width: 750px;
+    }
+    @include media("(min-width: 992px)") {
+        width: 970px;
+    }
+    @include media("(min-width: 1200px)") {
+        width: 1170px;
+    }
+}
+
+.chapter-dropdown {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    img {
+        height: 10px;
+        width: 10px;
+        padding: 6px;
+        margin-left: 10px;
+        opacity: .4;
+    }
+    margin-left: 30px;
+    cursor: pointer;
+    font-size: 9px;
+    margin-top: 5px;
+}
+
+.chapter-dropup {
+    cursor: pointer;
+    position: relative;
+    display: inline-block;
+    img {
+        height: 10px;
+        width: 10px;
+        padding: 6px;
+        margin-left: 10px;
+        opacity: .4;
+    }
+    cursor: pointer;
+    font-size: 9px;
+    margin-top: 5px;
+}
+
+.chapter-remove {
+    float: right;
+    margin-right: 20px;
+    cursor: pointer;
+    img {
+        width: 18px;
+        height: 18px;
+        margin-left: 20px;
+        opacity: 0.4;
+        margin-top: 4px;
+    }
+}
+

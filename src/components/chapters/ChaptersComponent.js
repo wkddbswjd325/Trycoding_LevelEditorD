@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
+import React from 'react';
+//import { Link } from 'react-router-dom';
+import styles from './ChaptersComponent.css';
+import ChaptersList from './ChaptersList';
 
-class ChaptersComponent extends Component {
+class ChaptersComponent extends React.Component {
   render() {
     return (
-    <div>
-      <h1> 여기는 챕터 컴포넌트 </h1>
-    </div>
+        <div className="chapters">
+            <ChaptersList/>
+        </div>
     );
   }
 }
