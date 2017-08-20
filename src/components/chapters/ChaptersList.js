@@ -41,6 +41,8 @@ class ChaptersList extends Component {
             title: 'level2 title'
           }, {
             title: 'level3 title'
+          }, {
+            title: 'level4 title'
           }]
         }, {
           title: 'chapter3 title',
@@ -51,6 +53,10 @@ class ChaptersList extends Component {
             title: 'level2 title'
           }, {
             title: 'level3 title'
+          }, {
+            title: 'level4 title'
+          }, {
+            title: 'level5 title'
           }]
         }]
     };
@@ -131,8 +137,6 @@ class ChaptersList extends Component {
     });
     console.log(key, 'is selected');
     console.log(this.state.selectedKey);
-
-
   }
 
   render() {

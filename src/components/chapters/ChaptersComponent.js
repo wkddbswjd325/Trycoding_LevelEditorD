@@ -6,7 +6,7 @@ import ChaptersList from './ChaptersList';
 class ChaptersComponent extends React.Component {
   render() {
     return (
-        <div className="chapters">
+        <div>
             <ChaptersList/>
         </div>
     );
