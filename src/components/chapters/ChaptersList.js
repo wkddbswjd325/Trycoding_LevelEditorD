@@ -23,6 +23,7 @@ class ChaptersList extends Component {
     this.state = {
         selectedKey: -1,
         chapters: [{
+          num: 0,
           title: 'chapter1 title',
           description: 'chapter1 description',
           level: [{
@@ -33,6 +34,7 @@ class ChaptersList extends Component {
             title: 'level3 title'
           }]
         }, {
+          num: 1,
           title: 'chapter2 title',
           description: 'chapter2 description',
           level: [{
@@ -45,6 +47,7 @@ class ChaptersList extends Component {
             title: 'level4 title'
           }]
         }, {
+          num: 2,
           title: 'chapter3 title',
           description: 'chapter3 description',
           level: [{
@@ -64,7 +67,6 @@ class ChaptersList extends Component {
     this.handleRename = this.handleRename.bind(this);
     this.handleMove = this.handleMove.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
-
     this.handleClick = this.handleClick.bind(this);
   }
 
@@ -132,9 +134,15 @@ class ChaptersList extends Component {
 
 // 챕터 클릭
   handleClick(key) {
-    this.setState({
+    if(this.state.selectedKey == key) {
+      this.setState({
+        selectedKey: -1,
+      });
+    } else {
+      this.setState({
         selectedKey: key,
-    });
+      });
+    }
     console.log(key, 'is selected');
     console.log(this.state.selectedKey);
   }
@@ -143,7 +151,7 @@ class ChaptersList extends Component {
     const chaptersList = (data) => {
       return data.map((chapter, index) => {
         return(
-            <div className="chapter">
+            <div key={index} className="chapter">
                 <div onClick={() => this.handleClick(index)} className="active-type title">
                     <div onClick={() => this.handleRename(index)} className="chapter-title"><h4>{chapter.title}</h4></div>
                     <div onClick={() => this.handleMove(1, index)} className="chapter-button chapter-dropdown ">
@@ -158,7 +166,7 @@ class ChaptersList extends Component {
                     </div>
                 </div>
                 <ChaptersContent
-                        isSelected={this.state.selectedKey !== -1}
+                        isSelected={this.state.selectedKey == index}
                         chapters={this.state.chapters[index]}
                         />
             </div>

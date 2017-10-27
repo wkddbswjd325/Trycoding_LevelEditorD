@@ -11,7 +11,6 @@ import remove from '../../assets/img/editor/delete.svg';
 
 class ChaptersContent extends React.Component {
 
-
   render() {
     const LevelList = (props) => {
       const levels = props.levels;
@@ -37,7 +36,8 @@ class ChaptersContent extends React.Component {
     const view = (
       <div className="contents">
         <div className="description">
-          <textarea value={this.props.chapters.description} cols="80" rows="8" name="description"></textarea>
+          <textarea defaultValue={this.props.chapters.description} cols="80" rows="8" name="description"
+          ></textarea>
         </div>
         <div className="list">
           <LevelList levels={this.props.chapters.level}/>
