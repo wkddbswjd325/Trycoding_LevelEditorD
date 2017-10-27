@@ -73,7 +73,6 @@ class ChaptersList extends Component {
 // 챕터 이름 변경
   handleRename(key) {
     let newName = prompt("New chapter title: ");
-
     if(newName) {
       this.setState({
         chapters: update(this.state.chapters,
@@ -117,7 +116,6 @@ class ChaptersList extends Component {
 // 챕터 삭제
   handleRemove(index) {
     if(index < 0) return;
-
     confirmAlert({
       title: 'Delete Chapter!',
       message: 'Are you sure you want to remove this chapter?',
@@ -134,7 +132,7 @@ class ChaptersList extends Component {
 
 // 챕터 클릭
   handleClick(key) {
-    if(this.state.selectedKey == key) {
+    if(this.state.selectedKey === key) {
       this.setState({
         selectedKey: -1,
       });
@@ -152,21 +150,21 @@ class ChaptersList extends Component {
       return data.map((chapter, index) => {
         return(
             <div key={index} className="chapter">
-                <div onClick={() => this.handleClick(index)} className="active-type title">
-                    <div onClick={() => this.handleRename(index)} className="chapter-title"><h4>{chapter.title}</h4></div>
-                    <div onClick={() => this.handleMove(1, index)} className="chapter-button chapter-dropdown ">
+                <div onClick={(e) => this.handleClick(index)} className="active-type title">
+                    <div onClick={(e) => {e.stopPropagation(); this.handleRename(index)}} className="chapter-title"><h4>{chapter.title}</h4></div>
+                    <div onClick={(e) => {e.stopPropagation(); this.handleMove(1, index)}} className="chapter-button chapter-dropdown ">
                         <img src={dropdown} alt="dropdown"/>
                     </div>
-                    <div onClick={() => this.handleMove(-1, index)} className="chapter-button chapter-dropup">
+                    <div onClick={(e) => {e.stopPropagation(); this.handleMove(-1, index)}} className="chapter-button chapter-dropup">
                         <img src={dropup} alt="dropup"/>
                     </div>
                     <div className="filler"></div>
-                    <div onClick={() => this.handleRemove(index)} className="chapter-remove chapter-button">
+                    <div onClick={(e) => {e.stopPropagation(); this.handleRemove(index)}} className="chapter-remove chapter-button">
                         <img src={remove} alt="remove"/>
                     </div>
                 </div>
                 <ChaptersContent
-                        isSelected={this.state.selectedKey == index}
+                        isSelected={this.state.selectedKey === index}
                         chapters={this.state.chapters[index]}
                         />
             </div>
