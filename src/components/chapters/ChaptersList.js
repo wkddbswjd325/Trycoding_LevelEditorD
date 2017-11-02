@@ -74,6 +74,7 @@ class ChaptersList extends Component {
 // 챕터 이름 변경
   handleRename(key) {
     let newName = prompt("New chapter title: ");
+    if(newName == '') return;
     if(newName) {
       this.setState({
         chapters: update(this.state.chapters,
@@ -147,8 +148,9 @@ class ChaptersList extends Component {
   }
 
   // 챕터 추가
-   handleAdd(chapter) {
+   handleAdd() {
      let chapterName = prompt("chapter title: ");
+     if(chapterName == null || chapterName == '') return;
      var chapter = {
         num: this.state.chapters.length,
         title: chapterName,
