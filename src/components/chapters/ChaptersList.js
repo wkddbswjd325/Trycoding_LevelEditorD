@@ -68,6 +68,7 @@ class ChaptersList extends Component {
     this.handleMove = this.handleMove.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
     this.handleClick = this.handleClick.bind(this);
+    this.handleAdd = this.handleAdd.bind(this);
   }
 
 // 챕터 이름 변경
@@ -144,6 +145,20 @@ class ChaptersList extends Component {
     console.log(key, 'is selected');
     console.log(this.state.selectedKey);
   }
+
+  // 챕터 추가
+   handleAdd(chapter) {
+     let chapterName = prompt("chapter title: ");
+     var chapter = {
+        num: this.state.chapters.length,
+        title: chapterName,
+        description: 'description',
+        level: []
+    }
+     this.setState({
+       chapters: update(this.state.chapters, { $push: [chapter]})
+     });
+   }
 
   render() {
     const chaptersList = (data) => {
