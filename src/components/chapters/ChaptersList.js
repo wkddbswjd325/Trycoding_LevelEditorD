@@ -90,28 +90,36 @@ class ChaptersList extends Component {
 // 챕터 순서 변경
   handleMove(direction, key) {
     let tempChapter = this.state.chapters[key];
-    // let chaptersLength = this.state.chapters.length;
+    let chaptersLength = this.state.chapters.length;
 
-    // 올리기
-    if(direction === -1) {
-      this.setState({
-        chapters: update(this.state.chapters,
-        {
-          [key] : { $set: this.state.chapters[key - 1] },
-          [key - 1] : { $set: tempChapter }
-        })
-      });
-    }
+    switch(direction) {
+      // 올리기
+      case -1:
+        // 최상단일 때 안올라가게
+        if(key === 0) {
+          return;
+        }
+        this.setState({
+          chapters: update(this.state.chapters,
+          {
+            [key] : { $set: this.state.chapters[key - 1] },
+            [key - 1] : { $set: tempChapter }
+          })
+        });
 
-    // 내리기
-    else if(direction === 1) {
-      this.setState({
-        chapters: update(this.state.chapters,
-        {
-          [key] : { $set: this.state.chapters[key + 1] },
-          [key + 1] : { $set: tempChapter }
-        })
-      });
+      // 내리기
+      case 1:
+        //최하단일 때 안올라가게
+        if(key === chaptersLength - 1) {
+          return;
+        }
+        this.setState({
+          chapters: update(this.state.chapters,
+          {
+            [key] : { $set: this.state.chapters[key + 1] },
+            [key + 1] : { $set: tempChapter }
+          })
+        });
     }
   }
 
